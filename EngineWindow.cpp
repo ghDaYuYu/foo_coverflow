@@ -123,6 +123,17 @@ void EngineWindow::swapBuffers() {
 
 LRESULT EngineWindow::messageHandler(UINT uMsg, WPARAM wParam, LPARAM lParam) {
   switch (uMsg) {
+    case WM_ERASEBKGND: {
+      HDC hDC = GetDC(hWnd);
+      RECT rc;
+      GetClientRect(hWnd, &rc);
+      auto bgcolor = defaultUiCallback->getSysColor(COLOR_WINDOW);
+      HBRUSH hBrush = ::CreateSolidBrush(bgcolor);
+      ::FillRect(hDC, &rc, hBrush);
+      ::DeleteObject((HGDIOBJ)hBrush);
+      ReleaseDC(hWnd, hDC);
+      return TRUE;
+    }
     case WM_MOUSEACTIVATE:
       SetFocus(hWnd);
       return MA_ACTIVATE;
