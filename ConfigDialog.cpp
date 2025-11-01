@@ -1,4 +1,5 @@
 #include "ConfigDialog.h"
+#include "main_menu_items.h"
 // clang-format off
 #include "EngineThread.h" //(1)
 #include "ConfigWindow.h" //(2)
@@ -9,6 +10,12 @@
 #include "yesno_dialog.h"
 
 namespace coverflow {
+
+static mainmenu_commands_factory_t<MainMenuItems::CoverflowGroup> foo_menu_coverflow_Group;
+static mainmenu_commands_factory_t<MainMenuItems::CoverflowMainPopupMenu> foo_menu_coverflow_MainPopupMenu;
+static mainmenu_commands_factory_t<MainMenuItems::CoverflowMainPopupCommands> foo_menu_coverflow_MainPopupCommands;
+
+static preferences_page_factory_t<preferences_page_myimpl>g_preferences_page_myimpl_factory;
 
 static library_viewer_factory_t<LibraryViewer> g_libraryViewer;
 

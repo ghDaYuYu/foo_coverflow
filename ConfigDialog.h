@@ -94,7 +94,4 @@ class preferences_page_myimpl : public preferences_page_impl<ConfigDialog> {
     return guid_display;
   }
 };
-
-static preferences_page_factory_t<preferences_page_myimpl>
-g_preferences_page_myimpl_factory;
 }   //namespace coverflow
